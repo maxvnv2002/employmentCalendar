@@ -1,0 +1,26 @@
+@import './assets/styles/main.scss';
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: $black;
+  background: $backgroundGray;
+}
+
+input {
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  border: none;
+}
+
+.container {
+  width: 1320px;
+}

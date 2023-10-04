@@ -1,0 +1,31 @@
+@import "./src/assets/styles/main";
+
+$cellWidth: 180px;
+$cellHeight: 60px;
+
+
+.cell {
+  width: $cellWidth;
+  height: $cellHeight;
+  border: 1px solid $lightGray;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  &:not(&.head) {
+    &:hover {
+      background: $lightPink;
+    }
+    &.active {
+      background: $pink;
+    }
+  }
+  &:first-child {
+    width: $cellHeight;
+  }
+  &.head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    cursor: auto;
+  }
+}

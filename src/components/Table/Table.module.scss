@@ -1,0 +1,37 @@
+@import "./src/assets/styles/main";
+
+.table {
+  margin-bottom: 23px;
+  .row {
+    display: flex;
+    flex-direction: column;
+
+    // Top-left cell
+    &:first-child {
+      div {
+        height: 42px;
+        &:first-child {
+          border-radius: 10px 0px 0px 0px;
+        }
+      }
+    }
+    // Top-right cell
+    &:first-child {
+      div:last-child {
+        border-radius: 0px 10px 0px 0px;
+      }
+    }
+    // Bottom-left cell
+    &:last-child {
+      div:first-child {
+        border-radius: 0px 0px 0px 10px;
+      }
+    }
+    // Bottom-right cell
+    &:last-child {
+      div:last-child {
+        border-radius: 0px 0px 10px 0px;
+      }
+    }
+  }
+}

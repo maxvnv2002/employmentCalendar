@@ -1,0 +1,37 @@
+@import './src/assets/styles/main';
+
+.checkboxWrapper {
+  label {
+    display: inline-flex;
+    align-items: center;
+    input[type="checkbox"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 2px;
+      margin-right: 8px;
+      border: 2px solid $black;
+      transition: all 0.25s ease;
+      outline: none;
+      cursor: pointer;
+      &.checked {
+        background-color: $black;
+        position: relative;
+        &::before {
+          content: url("../../assets/images/check.svg");
+          width: 12px;
+          height: 12px;
+          fill: $lightGray;
+          position: absolute;
+          right: calc(50% - 6px);
+          top: calc(50% - 7px);;
+        }
+      }
+    }
+    span {
+      user-select: none;
+    }
+  }
+
+}

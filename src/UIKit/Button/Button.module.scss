@@ -1,0 +1,16 @@
+@import './src/assets/styles/main';
+
+.wrap {
+  display: flex;
+  justify-content: flex-end;
+  .button {
+    width: 133px;
+    padding: 8px;
+    background: $black;
+    color: $white;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+  }
+}
