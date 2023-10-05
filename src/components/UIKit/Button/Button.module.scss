@@ -12,5 +12,13 @@
     border-radius: 8px;
     border: none;
     outline: none;
+    transition: all 0.25s ease;
+    &:hover {
+      scale: 1.1;
+    }
+    &:active {
+      scale: 0.9;
+    }
+
   }
 }

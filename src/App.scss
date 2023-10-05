@@ -7,17 +7,20 @@
 }
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   padding: 20px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: $black;
-  overflow-y: hidden;
+  overflow-x: hidden;
   background: $backgroundGray;
+  @include _md {
+    padding: 0;
+  }
+  @include _sm {
+    display: block;
+  }
 }
 
 input {
@@ -28,4 +31,19 @@ input {
 
 .container {
   width: 1320px;
+  @include _xxl {
+    width: $containerWidth_xxl;
+  }
+  @include _xl {
+    width: $containerWidth_xl;
+  }
+  @include _lg {
+    width: $containerWidth_lg;
+  }
+  @include _md {
+    width: calc(100vw - 28px);
+  }
+  @include _sm {
+    width: calc(100vw - 28px);
+  }
 }

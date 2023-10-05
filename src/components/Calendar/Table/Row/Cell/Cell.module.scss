@@ -31,4 +31,12 @@ $cellHeight: 60px;
   &:first-child {
     width: $cellHeight;
   }
+  @include _md {
+    font-size: 10px;
+  }
+  @include _sm {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 }

@@ -43,6 +43,9 @@
     }
     .content {
       width: 360px;
+      @include _sm {
+        width: 100%;
+      }
     }
   }
   &.closing {

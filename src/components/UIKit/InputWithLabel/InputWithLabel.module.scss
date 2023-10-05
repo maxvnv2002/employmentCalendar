@@ -17,6 +17,9 @@
       border-color: red;
 
     }
+    @include _xs {
+      width: inherit;
+    }
   }
   .message {
     margin-left: 18px;

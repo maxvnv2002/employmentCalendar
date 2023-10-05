@@ -28,6 +28,12 @@
           top: calc(50% - 7px);;
         }
       }
+      &:hover {
+        scale: 1.1;
+      }
+      &:active {
+        scale: 0.9;
+      }
     }
     span {
       user-select: none;
