@@ -1,12 +1,17 @@
 import React from 'react';
 import './App.scss';
-import Calendar from "./components/Calendar";
+import Calendar from "./components/Calendar/Calendar";
+import {Provider} from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-      <div className="App">
-        <Calendar/>
-      </div>
+      <Provider store={store}>
+          <div className="App">
+              <Calendar/>
+          </div>
+      </Provider>
+
   );
 }
 

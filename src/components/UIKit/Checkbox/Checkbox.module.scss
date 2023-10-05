@@ -1,4 +1,4 @@
-@import './src/assets/styles/main';
+@import '../../../assets/styles/main';
 
 .checkboxWrapper {
   label {
@@ -19,7 +19,7 @@
         background-color: $black;
         position: relative;
         &::before {
-          content: url("../../assets/images/check.svg");
+          content: url("../../../assets/images/check.svg");
           width: 12px;
           height: 12px;
           fill: $lightGray;

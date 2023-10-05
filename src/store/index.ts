@@ -1,8 +1,8 @@
-import { combineReducers, createStore } from 'redux';
-import {tableReducer} from "./reducers/tableReducer";
+import { createStore } from 'redux';
 import {composeWithDevTools} from "redux-devtools-extension";
-const rootReducer = combineReducers({table: tableReducer})
+import {calendarReducer} from "./reducers/calendarReducer";
 
-const store = createStore(rootReducer, composeWithDevTools());
+
+const store = createStore(calendarReducer, composeWithDevTools());
 
 export default store;
