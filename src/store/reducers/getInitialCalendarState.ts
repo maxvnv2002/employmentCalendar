@@ -2,7 +2,7 @@ import {TRow, TTable} from "../../types/table";
 import {getEmptyRows} from "../../helpers/getEmptyRows";
 import {ICalendarState} from "../../types/calendar";
 
-const DAYS = [
+export const DAYS = [
     'Понедельник',
     'Вторник',
     'Среда',
@@ -28,11 +28,14 @@ const TABLE: TTable = [
 const employee: string = '';
 const note: string = ''
 const isDivided: boolean = false;
-
+const isModalShowed: boolean = false;
+const isEmployeeInputEmpty: boolean = false
 
 export const initialCalendarState: ICalendarState= {
     table: TABLE,
     employee: employee,
     note: note,
-    isDivided: isDivided
+    isDivided: isDivided,
+    isModalShowed: isModalShowed,
+    isEmployeeInputEmpty: isEmployeeInputEmpty
 }

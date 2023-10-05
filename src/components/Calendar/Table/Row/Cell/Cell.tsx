@@ -16,7 +16,7 @@ interface CellProps {
 const Cell: FC<CellProps> = (props) => {
     const {rowIndex, cellIndex} = props
     const { value, checked, isHead } = props.cell
-    const isCellChecked = useSelector((state: ICalendarState) => state.table);
+
     function cellClickHandler (e: React.MouseEvent<HTMLDivElement>) {
         if(isHead) return
 

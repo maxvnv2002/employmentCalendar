@@ -12,5 +12,14 @@
     border-radius: 4px;
     border: 1px solid $lightGray;
     color: $black;
+    transition: all 0.25s ease;
+    &.error {
+      border-color: red;
+
+    }
+  }
+  .message {
+    margin-left: 18px;
+    color: red;
   }
 }

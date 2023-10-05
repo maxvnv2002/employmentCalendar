@@ -6,7 +6,7 @@ import {initialCalendarState} from "./getInitialCalendarState";
 
 interface someAction {
     type: string,
-    payload: any
+    payload?: any
 }
 
 export function calendarReducer(state = initialCalendarState, action: someAction) {
@@ -19,13 +19,15 @@ export function calendarReducer(state = initialCalendarState, action: someAction
             const currentCell = newTable[rowIndex][cellIndex]
             currentCell.checked = checked
 
-            // console.log("action.payload",action.payload);
-            // console.log("currentCell",currentCell);
-
             return {...state, table: [...newTable]}
         case actions.setInputValue:
-            console.log([action.payload.targetState], action.payload.value)
             return {...state, [action.payload.targetState]: action.payload.value}
+        case actions.setInputStatus:
+            return {...state, isEmployeeInputEmpty: action.payload}
+        case actions.changeModalStatus:
+            return {...state, isModalShowed: !state.isModalShowed}
+        case actions.setDivideStatus:
+            return {...state, isDivided: !state.isDivided}
         default: return state
     }
 }

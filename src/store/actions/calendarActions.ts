@@ -1,2 +1,5 @@
 export const setStatus = 'cell/setStatus'
 export const setInputValue = 'input/setValue'
+export const setInputStatus = 'input/setStatus'
+export const changeModalStatus = 'modal/changeStatus'
+export const setDivideStatus = 'divide/setStatus'

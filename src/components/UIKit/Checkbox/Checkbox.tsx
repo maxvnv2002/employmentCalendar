@@ -3,12 +3,13 @@ import classes from './Checkbox.module.scss';
 
 interface CheckboxProps {
     children: React.ReactChild | React.ReactNode;
+    isChecked: boolean,
+    setIsChecked: () => void;
 }
-const Checkbox: FC<CheckboxProps> = ({ children }) => {
-    const [isChecked, setIsChecked] = useState<boolean>(false);
+const Checkbox: FC<CheckboxProps> = ({ children, isChecked, setIsChecked }) => {
 
     function changeInputHandler(e: React.ChangeEvent<HTMLInputElement>) {
-        setIsChecked(prevState => !prevState)
+        setIsChecked()
     }
 
     return (

@@ -1,0 +1,14 @@
+.list {
+  list-style: none;
+  li {
+    padding-left: 7px;
+    &.hidden {
+      display: none;
+    }
+
+    &:before {
+      content: '●';
+      margin-right: 3px;
+    }
+  }
+}

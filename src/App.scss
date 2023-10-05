@@ -7,11 +7,16 @@
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   padding: 20px;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: $black;
+  overflow-y: hidden;
   background: $backgroundGray;
 }
 

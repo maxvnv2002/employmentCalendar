@@ -10,4 +10,18 @@ export const setInputValue = (targetState: string, value: string) => ({
     payload: {targetState, value}
 
 })
+
+export const setInputEmptyStatus = (boolean: boolean) => ({
+    type: actions.setInputStatus,
+    payload: boolean
+})
+
+export const changeModalStatus = () => ({
+    type: actions.changeModalStatus
+})
+
+export const setDivideStatus = () => ({
+    type: actions.setDivideStatus
+})
+
 // export type TableActions =

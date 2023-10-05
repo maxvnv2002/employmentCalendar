@@ -9,17 +9,27 @@ interface InputWithLabelProps {
     placeholder: string;
     labelValue: string;
     className?: string;
-    targetState: string
+    targetState: string;
+    canBeEmpty?: boolean
 }
 const InputWithLabel: FC<InputWithLabelProps> = ({
     placeholder,
     labelValue,
     className = '',
     targetState,
+    canBeEmpty= true
 }) => {
     const dispatch = useDispatch()
-    const inputValue = useSelector((state: ICalendarState) => state[targetState])
-    const selectedInputClasses = classNames({[classes.input] : true, [className] : !!className})
+    const calendarState = useSelector((state: ICalendarState) => state)
+    const inputValue = calendarState[targetState]
+    const isEmpty = calendarState.isEmployeeInputEmpty;
+    const isErrorShowed = !canBeEmpty && isEmpty
+
+    const selectedInputClasses = classNames({
+        [classes.input] : true,
+        [className] : !!className,
+        [classes.error]: isErrorShowed
+    })
 
     function inputChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
         dispatch(setInputValue(targetState, e.target.value))
@@ -34,6 +44,7 @@ const InputWithLabel: FC<InputWithLabelProps> = ({
                    value={inputValue}
                    onChange={inputChangeHandler}
             />
+            { isErrorShowed && <label className={classes.message} htmlFor={classes.input}>Поле не должно быть пустым</label> }
         </div>
     );
 };

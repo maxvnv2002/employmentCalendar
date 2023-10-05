@@ -4,6 +4,11 @@ import InputWithLabel from "../UIKit/InputWithLabel/InputWithLabel";
 import Table from "./Table/Table";
 import Button from "../UIKit/Button/Button";
 import Checkbox from "../UIKit/Checkbox/Checkbox";
+import Modal from "./Modal/Modal";
+import {useDispatch, useSelector} from "react-redux";
+import {changeModalStatus, setDivideStatus, setInputEmptyStatus} from "../../store/actions/calendarActionCreators";
+import {ICalendarState} from "../../types/calendar";
+import classNames from "classnames";
 
 enum inputTargets {
     note = 'note',
@@ -11,6 +16,20 @@ enum inputTargets {
 }
 
 const Calendar: FC = () => {
+    const calendarState = useSelector((state: ICalendarState) => state)
+
+    const dispatch = useDispatch()
+    function sendCalendarHandler () {
+        if (calendarState.employee.length !== 0) {
+            dispatch(setInputEmptyStatus(false))
+            dispatch(changeModalStatus())
+        } else {
+            dispatch(setInputEmptyStatus(true))
+        }
+    }
+    function checkboxHandler () {
+        dispatch(setDivideStatus())
+    }
 
     return (
         <div className={classes.calendar}>
@@ -20,8 +39,9 @@ const Calendar: FC = () => {
                     <InputWithLabel placeholder='Фамилия Имя Отчество'
                                     labelValue='Сотрудник'
                                     targetState={inputTargets.employee}
+                                    canBeEmpty={false}
                     />
-                    <Checkbox children='Включить деление'/>
+                    <Checkbox children='Включить деление' isChecked={calendarState.isDivided} setIsChecked={checkboxHandler}/>
                 </div>
                 <Table/>
                 <InputWithLabel placeholder='Введите примечание...'
@@ -29,8 +49,9 @@ const Calendar: FC = () => {
                                 className={classes.input}
                                 targetState={inputTargets.note}
                 />
-                <Button children='Отправить'/>
+                <Button children='Отправить' onClick={sendCalendarHandler}/>
             </div>
+            <Modal title={'Занятость'}/>
         </div>
     );
 };

@@ -8,13 +8,17 @@ $cellHeight: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 
   width: $cellWidth;
   height: $cellHeight;
   border: 1px solid $lightGray;
+  cursor: pointer;
   transition: all 0.25s ease;
-
+  &.head {
+    font-weight: 500;
+    user-select: none;
+    cursor: default;
+  }
   &:not(&.head) {
     &:hover {
       background: $lightPink;
@@ -24,13 +28,7 @@ $cellHeight: 60px;
       background: $pink;
     }
   }
-
   &:first-child {
     width: $cellHeight;
-  }
-
-  &.head {
-    cursor: default;
-    font-weight: 500;
   }
 }

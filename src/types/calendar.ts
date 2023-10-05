@@ -5,5 +5,7 @@ export interface ICalendarState {
     table: TTable,
     employee: string,
     note: string,
-    isDivided: boolean
+    isDivided: boolean,
+    isModalShowed: boolean,
+    isEmployeeInputEmpty: boolean
 }

@@ -1,3 +1,4 @@
+
 export interface ICell {
 	value: string | number;
 	checked: boolean;
