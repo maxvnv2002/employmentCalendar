@@ -20,10 +20,14 @@ const headersRow: TRow = DAYS.map((el) => ({
 
 const ROWS_COUNT = 9
 
-const TABLE: TTable = [
-    headersRow,
-    ...getEmptyRows(ROWS_COUNT, DAYS.length)
-]
+
+function getNewTABLE() {
+    const TABLE: TTable = [
+        headersRow,
+        ...getEmptyRows(ROWS_COUNT, DAYS.length)
+    ]
+    return TABLE
+}
 
 const employee: string = '';
 const note: string = ''
@@ -31,11 +35,14 @@ const isDivided: boolean = false;
 const isModalShowed: boolean = false;
 const isEmployeeInputEmpty: boolean = false
 
-export const initialCalendarState: ICalendarState= {
-    table: TABLE,
-    employee: employee,
-    note: note,
-    isDivided: isDivided,
-    isModalShowed: isModalShowed,
-    isEmployeeInputEmpty: isEmployeeInputEmpty
+export function getInitialCalendarState() {
+    const initialCalendarState: ICalendarState= {
+        table: getNewTABLE(),
+        employee: employee,
+        note: note,
+        isDivided: isDivided,
+        isModalShowed: isModalShowed,
+        isEmployeeInputEmpty: isEmployeeInputEmpty
+    }
+    return initialCalendarState
 }

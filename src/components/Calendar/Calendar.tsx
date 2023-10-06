@@ -6,7 +6,12 @@ import Button from "../UIKit/Button/Button";
 import Checkbox from "../UIKit/Checkbox/Checkbox";
 import Modal from "./Modal/Modal";
 import {useDispatch, useSelector} from "react-redux";
-import {changeModalStatus, setDivideStatus, setInputEmptyStatus} from "../../store/actions/calendarActionCreators";
+import {
+    changeModalStatus,
+    resetCalendar,
+    setDivideStatus,
+    setInputEmptyStatus
+} from "../../store/actions/calendarActionCreators";
 import {ICalendarState} from "../../types/calendar";
 import classNames from "classnames";
 
@@ -28,7 +33,7 @@ const Calendar: FC = () => {
         }
     }
     function checkboxHandler () {
-        dispatch(setDivideStatus())
+        dispatch(resetCalendar())
     }
 
     return (

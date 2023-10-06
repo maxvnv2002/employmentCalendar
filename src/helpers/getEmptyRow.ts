@@ -7,7 +7,11 @@ export function getEmptyRow(cellCount: number): TRow {
 	for(let i = 0; i < cellCount; i++) {
 			cells.push({
 					value: '',
-					checked: false
+					checked: false,
+					innerCells: [
+						{isChecked: false},
+						{isChecked: false}
+					]
 			})
 	}
 

@@ -14,19 +14,40 @@ $cellHeight: 60px;
   border: 1px solid $lightGray;
   cursor: pointer;
   transition: all 0.25s ease;
+  .innerCell {
+    height: 100%;
+    width: 100%;
+    transition: all 0.25s ease;
+    &:hover {
+      background: $lightPink;
+    }
+  }
   &.head {
     font-weight: 500;
     user-select: none;
     cursor: default;
   }
-  &:not(&.head) {
-    &:hover {
-      background: $lightPink;
+  &.divided {
+    display: flex;
+    flex-direction: column;
+    .innerCell {
+      height: 50%;
+      transition: all 0.25s ease;
+      &:first-child {
+        border-bottom: 2px dashed $lightGray;
+      }
+      &:hover {
+        background: $lightPink;
+      }
+      &.checkedInnerCell {
+        background: $pink;
+      }
     }
-
-    &.checked {
-      background: $pink;
-    }
+  }
+  &:not(&.head).checked {
+      .innerCell {
+        background: $pink;
+      }
   }
   &:first-child {
     width: $cellHeight;

@@ -1,8 +1,12 @@
 import * as actions from './calendarActions'
 
-export const setCellStatus = (rowIndex: number, cellIndex: number, checked: boolean) => ({
+export const setCellStatus = (rowIndex: number,
+                              cellIndex: number,
+                              checked: boolean,
+                              innerCellIndex: number) => (
+{
     type: actions.setStatus,
-    payload: {rowIndex, cellIndex, checked}
+    payload: {rowIndex, cellIndex, checked, innerCellIndex}
 })
 
 export const setInputValue = (targetState: string, value: string) => ({
@@ -24,4 +28,7 @@ export const setDivideStatus = () => ({
     type: actions.setDivideStatus
 })
 
+export const resetCalendar = () => ({
+    type: actions.resetCalendar
+})
 // export type TableActions =

@@ -17,7 +17,8 @@ const Row: FC<RowProps> = ({ row, rowIndex }) => {
                 cell={{
                     value: rowIndex === 0 ? "" : rowIndex,
                     checked: false,
-                    isHead: true
+                    isHead: true,
+                    innerCells: [{isChecked: false}, {isChecked: false}]
                 }}
                 rowIndex={rowIndex}
                 cellIndex={0}

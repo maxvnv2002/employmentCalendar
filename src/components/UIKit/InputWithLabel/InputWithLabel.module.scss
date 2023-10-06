@@ -24,5 +24,8 @@
   .message {
     margin-left: 18px;
     color: red;
+    @include _xs {
+      margin-top: 18px;
+    }
   }
 }

@@ -1,8 +1,11 @@
-
+export interface IDividedCell {
+	isChecked: boolean
+}
 export interface ICell {
 	value: string | number;
 	checked: boolean;
 	isHead?: true;
+	innerCells?: IDividedCell[]
 }
 
 export type TRow = ICell[]

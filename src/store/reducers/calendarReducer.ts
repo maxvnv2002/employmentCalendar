@@ -1,8 +1,9 @@
 import { getEmptyRows } from "../../helpers/getEmptyRows";
 import { TRow, TTable } from "../../types/table";
 import * as actions from '../actions/calendarActions'
-import {initialCalendarState} from "./getInitialCalendarState";
+import {getInitialCalendarState} from "./getInitialCalendarState";
 
+const initialCalendarState = getInitialCalendarState()
 
 interface someAction {
     type: string,
@@ -15,9 +16,20 @@ export function calendarReducer(state = initialCalendarState, action: someAction
             const {rowIndex, cellIndex, checked} = action.payload
 
             const newTable = [...state.table]
-
             const currentCell = newTable[rowIndex][cellIndex]
-            currentCell.checked = checked
+
+            if (state.isDivided) {
+                const innerCellIndex = action.payload.innerCellIndex
+                if (currentCell.innerCells) {
+                    const currentInnerCell = currentCell.innerCells[innerCellIndex];
+                    currentInnerCell.isChecked = !currentInnerCell.isChecked
+                }
+
+
+
+            } else {
+                currentCell.checked = checked
+            }
 
             return {...state, table: [...newTable]}
         case actions.setInputValue:
@@ -28,6 +40,8 @@ export function calendarReducer(state = initialCalendarState, action: someAction
             return {...state, isModalShowed: !state.isModalShowed}
         case actions.setDivideStatus:
             return {...state, isDivided: !state.isDivided}
+        case actions.resetCalendar:
+            return {...getInitialCalendarState(), isDivided: !state.isDivided}
         default: return state
     }
 }
