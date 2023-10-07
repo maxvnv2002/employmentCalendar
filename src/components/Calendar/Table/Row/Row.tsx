@@ -1,4 +1,4 @@
-import { FC, useId } from 'react';
+import { FC } from 'react';
 import classes from "../Table.module.scss";
 import Cell from "./Cell/Cell";
 import {TRow} from "../../../../types/table";
@@ -9,7 +9,7 @@ interface RowProps {
 }
 
 const Row: FC<RowProps> = ({ row, rowIndex }) => {
-    const key = useId()
+    console.log("Row update",);
 
     return (
         <div className={classes.row}>
@@ -24,7 +24,7 @@ const Row: FC<RowProps> = ({ row, rowIndex }) => {
             />
 
             {row.map((cell, i) => (
-                <Cell key={key + i} rowIndex={rowIndex} cellIndex={i}/>
+                <Cell key={i} rowIndex={rowIndex} cellIndex={i}/>
             ))}
         </div>
     );

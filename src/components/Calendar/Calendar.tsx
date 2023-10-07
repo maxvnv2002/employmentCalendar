@@ -1,62 +1,23 @@
-import React, {FC} from 'react';
-import classes from './Calendar.module.scss';
-import InputWithLabel from "../UIKit/InputWithLabel/InputWithLabel";
-import Table from "./Table/Table";
-import Button from "../UIKit/Button/Button";
-import Checkbox from "../UIKit/Checkbox/Checkbox";
-import Modal from "./Modal/Modal";
-import {useDispatch, useSelector} from "react-redux";
-import {
-    changeModalStatus,
-    resetCalendar,
-    setDivideStatus,
-    setInputEmptyStatus
-} from "../../store/actions/calendarActionCreators";
-import {ICalendarState} from "../../types/calendar";
-import classNames from "classnames";
+import { FC } from 'react';
 
-enum inputTargets {
-    note = 'note',
-    employee = 'employee'
-}
+import classes from './Calendar.module.scss';
+import Table from "./Table/Table";
+import Modal from "./Modal/Modal";
+import BarTop from './BarTop/BarTop';
+import BarBottom from './BarBottom/BarBottom';
 
 const Calendar: FC = () => {
-    const calendarState = useSelector((state: ICalendarState) => state)
-
-    const dispatch = useDispatch()
-    function sendCalendarHandler () {
-        if (calendarState.employee.length !== 0) {
-            dispatch(setInputEmptyStatus(false))
-            dispatch(changeModalStatus())
-        } else {
-            dispatch(setInputEmptyStatus(true))
-        }
-    }
-    function checkboxHandler () {
-        dispatch(resetCalendar())
-    }
+    console.log("Calendar update");
 
     return (
         <div className={classes.calendar}>
             <div className="container">
                 <h2>Календарь занятости</h2>
-                <div className={classes.bar}>
-                    <InputWithLabel placeholder='Фамилия Имя Отчество'
-                                    labelValue='Сотрудник'
-                                    targetState={inputTargets.employee}
-                                    canBeEmpty={false}
-                    />
-                    <Checkbox children='Включить деление' isChecked={calendarState.isDivided} setIsChecked={checkboxHandler}/>
-                </div>
-                <Table/>
-                <InputWithLabel placeholder='Введите примечание...'
-                                labelValue='Примечание'
-                                className={classes.input}
-                                targetState={inputTargets.note}
-                />
-                <Button children='Отправить' onClick={sendCalendarHandler}/>
+                <BarTop />
+                <Table />
+                <BarBottom/>
             </div>
-            <Modal title={'Занятость'}/>
+            <Modal title={'Занятость'} />
         </div>
     );
 };

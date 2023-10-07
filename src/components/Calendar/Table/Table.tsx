@@ -4,6 +4,7 @@ import Row from "./Row/Row";
 import store from "../../../store";
 
 const Table: FC = () => {
+    console.log("Table update",);
     const {table} = store.getState();
 
     return (
