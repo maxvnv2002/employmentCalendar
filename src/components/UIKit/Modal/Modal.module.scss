@@ -1,0 +1,61 @@
+$animationDuration: 0.3s;
+
+.modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: rgba(0,0,0,0.4);
+	backdrop-filter: blur(5px);
+
+	&.open {
+		animation: animOpen $animationDuration ease forwards;
+	}
+	
+	&.close {
+		animation: animClose $animationDuration ease forwards;
+	}
+
+	&.closed {
+		display: none;
+	}
+
+	.wrapper {
+		display: block;
+		width: 400px;
+		height: 300px;
+		background: #fff;
+		padding: 10px;
+		border-radius: 10px;
+	}
+}
+
+
+@keyframes animOpen {
+	0% {
+		display: flex;
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes animClose {
+	0% {
+		display: flex;
+		opacity: 1;
+	}
+	90% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+		display: none;
+	}
+}
