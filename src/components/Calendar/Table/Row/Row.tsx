@@ -16,7 +16,6 @@ const Row: FC<RowProps> = ({ row, rowIndex }) => {
             <Cell
                 cell={{
                     value: rowIndex === 0 ? "" : rowIndex,
-                    checked: false,
                     isHead: true,
                     innerCells: [{isChecked: false}, {isChecked: false}]
                 }}
@@ -25,7 +24,7 @@ const Row: FC<RowProps> = ({ row, rowIndex }) => {
             />
 
             {row.map((cell, i) => (
-                <Cell key={key + i} cell={cell} rowIndex={rowIndex} cellIndex={i}/>
+                <Cell key={key + i} rowIndex={rowIndex} cellIndex={i}/>
             ))}
         </div>
     );

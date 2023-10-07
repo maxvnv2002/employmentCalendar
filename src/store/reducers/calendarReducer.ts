@@ -13,23 +13,16 @@ interface someAction {
 export function calendarReducer(state = initialCalendarState, action: someAction) {
     switch (action.type) {
         case actions.setStatus:
-            const {rowIndex, cellIndex, checked} = action.payload
+            const {rowIndex, cellIndex, innerCellIndex} = action.payload
+            const newTable = JSON.parse(JSON.stringify([...state.table]))
+            const currentCell = {...newTable[rowIndex][cellIndex]}
+            const currentInnerCell = {...currentCell}.innerCells[innerCellIndex];
 
-            const newTable = [...state.table]
-            const currentCell = newTable[rowIndex][cellIndex]
+            const stateCell = state.table[rowIndex][cellIndex]
+            const stateInnerCell = stateCell.innerCells[innerCellIndex]
 
-            if (state.isDivided) {
-                const innerCellIndex = action.payload.innerCellIndex
-                if (currentCell.innerCells) {
-                    const currentInnerCell = currentCell.innerCells[innerCellIndex];
-                    currentInnerCell.isChecked = !currentInnerCell.isChecked
-                }
+            currentInnerCell.isChecked = !stateInnerCell.isChecked
 
-
-
-            } else {
-                currentCell.checked = checked
-            }
 
             return {...state, table: [...newTable]}
         case actions.setInputValue:
@@ -37,11 +30,12 @@ export function calendarReducer(state = initialCalendarState, action: someAction
         case actions.setInputStatus:
             return {...state, isEmployeeInputEmpty: action.payload}
         case actions.changeModalStatus:
+            console.log(state)
             return {...state, isModalShowed: !state.isModalShowed}
         case actions.setDivideStatus:
             return {...state, isDivided: !state.isDivided}
         case actions.resetCalendar:
-            return {...getInitialCalendarState(), isDivided: !state.isDivided}
+            return {...getInitialCalendarState(!state.isDivided)}
         default: return state
     }
 }

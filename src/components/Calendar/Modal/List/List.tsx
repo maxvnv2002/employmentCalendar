@@ -20,20 +20,7 @@ const List: FC<ListProps> = ({array} ) => {
 
     return (
         <ul className={classes.list} ref={listRef}>{
-            !isTableDivided ? DAYS.map((day, dayIndex) => {
-                const daysChecked = array.reduce((acc, curr, i) => {
-                    const currentDayIndex = curr[dayIndex]
-
-                    if (currentDayIndex.checked) {
-                        if (acc) { acc += `, ${i}` } else {acc += i }
-                    }
-                    return acc
-                }, '')
-
-                if (daysChecked) {
-                    return <li key={day}>{`${day}: ${daysChecked}`}</li>
-                }
-            }) : DAYS.map((day, dayIndex) => {
+            DAYS.map((day, dayIndex) => {
                 const daysChecked = array.reduce((acc, curr, i) => {
                     const currentDayIndex = curr[dayIndex]
                     const currDayCells = currentDayIndex.innerCells
@@ -50,8 +37,6 @@ const List: FC<ListProps> = ({array} ) => {
                             acc += `${startOfNewCell}${i}/${currDayCells.findIndex(cell => cell.isChecked) + 1}`
                         }
                     }
-
-
                     return acc
                 }, '')
                 if (daysChecked) {

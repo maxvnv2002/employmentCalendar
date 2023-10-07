@@ -14,30 +14,30 @@ export const DAYS = [
 
 const headersRow: TRow = DAYS.map((el) => ({
     value: el,
-    checked: false,
     isHead: true,
+    innerCells: [{isChecked: false}, {isChecked: false}]
 }))
 
 const ROWS_COUNT = 9
 
 
-function getNewTABLE() {
+function getNewTABLE(isDivided: boolean) {
     const TABLE: TTable = [
         headersRow,
-        ...getEmptyRows(ROWS_COUNT, DAYS.length)
+        ...getEmptyRows(ROWS_COUNT, DAYS.length, isDivided)
     ]
     return TABLE
 }
 
 const employee: string = '';
 const note: string = ''
-const isDivided: boolean = false;
+const initialDivide: boolean = false;
 const isModalShowed: boolean = false;
 const isEmployeeInputEmpty: boolean = false
 
-export function getInitialCalendarState() {
+export function getInitialCalendarState(isDivided = initialDivide) {
     const initialCalendarState: ICalendarState= {
-        table: getNewTABLE(),
+        table: getNewTABLE(isDivided),
         employee: employee,
         note: note,
         isDivided: isDivided,

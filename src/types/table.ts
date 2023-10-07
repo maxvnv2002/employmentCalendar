@@ -3,9 +3,8 @@ export interface IDividedCell {
 }
 export interface ICell {
 	value: string | number;
-	checked: boolean;
 	isHead?: true;
-	innerCells?: IDividedCell[]
+	innerCells: IDividedCell[]
 }
 
 export type TRow = ICell[]

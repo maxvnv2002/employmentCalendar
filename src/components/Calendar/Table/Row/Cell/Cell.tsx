@@ -6,41 +6,41 @@ import store from '../../../../../store';
 import { setCellStatus } from '../../../../../store/actions/calendarActionCreators';
 import {useSelector} from "react-redux";
 import {ICalendarState} from "../../../../../types/calendar";
+import InnerCell from "./InnerCell/InnerCell";
 
 interface CellProps {
-    cell: ICell;
+    cell?: ICell;
     rowIndex: number;
     cellIndex: number;
 }
 
-const Cell: FC<CellProps> = (props) => {
+const Cell: FC<CellProps> = React.memo(({rowIndex, cellIndex, cell}) => {
     const isTableDivided = useSelector((state: ICalendarState) => state.isDivided)
-    const {rowIndex, cellIndex} = props
-    const { value, checked, isHead, innerCells } = props.cell
+    const emptyCell = useSelector((state: ICalendarState) => state.table[rowIndex][cellIndex])
+    const currCell = cell ? cell : emptyCell
+
+    const { value, isHead, innerCells } = currCell
+
     function cellClickHandler (e: React.MouseEvent<HTMLDivElement>, innerCellIndex: number = 0) {
         if(isHead) return
-
-        store.dispatch(setCellStatus(rowIndex, cellIndex, !checked, innerCellIndex))
+        console.log('click on', rowIndex, cellIndex,innerCellIndex)
+        store.dispatch(setCellStatus(rowIndex, cellIndex, innerCellIndex))
     }
 
-    const cellClasses = useMemo(() => classNames({
+    const cellClasses = classNames({
         [classes.cell]: true,
-        [classes.checked]: checked,
         [classes.head]: isHead,
         [classes.divided]: isTableDivided
-    }), [checked, isHead, isTableDivided])
+    })
 
-    if (innerCells && isTableDivided && !isHead) {
+    if (!isHead) {
         return (
             <div className={cellClasses}>
                 { innerCells.map((innerCell, index: number) => (
-                    <div className={classNames({
-                        [classes.innerCell]: true,
-                        [classes.checkedInnerCell]: innerCell.isChecked
-                    })}
-                         onClick={(event) => cellClickHandler(event, index)}
-                    >
-                    </div>
+                    <InnerCell onClick={(event) => cellClickHandler(event, index)}
+                               index={index}
+                               isChecked={innerCell.isChecked}
+                    />
                 ))}
             </div>
         );
@@ -49,9 +49,8 @@ const Cell: FC<CellProps> = (props) => {
     return (
         <div className={cellClasses}>
             {value}
-            { !isHead && <div className={classes.innerCell} onClick={(event) => cellClickHandler(event, 0)}></div> }
         </div>
     );
-};
+});
 
 export default Cell;

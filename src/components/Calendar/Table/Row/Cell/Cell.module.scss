@@ -21,6 +21,9 @@ $cellHeight: 60px;
     &:hover {
       background: $lightPink;
     }
+    &.checkedInnerCell {
+      background: $pink;
+    }
   }
   &.head {
     font-weight: 500;
@@ -36,18 +39,7 @@ $cellHeight: 60px;
       &:first-child {
         border-bottom: 2px dashed $lightGray;
       }
-      &:hover {
-        background: $lightPink;
-      }
-      &.checkedInnerCell {
-        background: $pink;
-      }
     }
-  }
-  &:not(&.head).checked {
-      .innerCell {
-        background: $pink;
-      }
   }
   &:first-child {
     width: $cellHeight;

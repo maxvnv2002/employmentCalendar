@@ -2,11 +2,10 @@ import * as actions from './calendarActions'
 
 export const setCellStatus = (rowIndex: number,
                               cellIndex: number,
-                              checked: boolean,
                               innerCellIndex: number) => (
 {
     type: actions.setStatus,
-    payload: {rowIndex, cellIndex, checked, innerCellIndex}
+    payload: {rowIndex, cellIndex, innerCellIndex}
 })
 
 export const setInputValue = (targetState: string, value: string) => ({
