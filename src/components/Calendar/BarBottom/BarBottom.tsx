@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 
 import classes from './BarBottom.module.scss'
 import InputWithLabel from '../../UIKit/InputWithLabel/InputWithLabel';
@@ -32,9 +32,9 @@ const BarBottom: FC = () => {
 		dispatch(changeModalStatus())
 	}
 
-	function noteChangeHandler(value: string) {
+	const noteChangeHandler = useCallback((value: string) => {
 		dispatch(setInputValue('note', value))
-	}
+	}, [])
 
 	return (
 		<div className={classes.barBottom}>
