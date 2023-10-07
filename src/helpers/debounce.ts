@@ -5,7 +5,6 @@ export const debounce = <S extends any[], T extends (...args: S) => any>(f: T, d
 		if(timeoutId) clearTimeout(timeoutId)
 	
 		timeoutId = setTimeout(() => {
-			console.log("debounce",);
 			f.apply(this, args)
 		}, delay)
 	}

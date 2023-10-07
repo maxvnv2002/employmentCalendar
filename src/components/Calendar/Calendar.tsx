@@ -7,8 +7,6 @@ import BarTop from './BarTop/BarTop';
 import BarBottom from './BarBottom/BarBottom';
 
 const Calendar: FC = () => {
-    console.log("Calendar update");
-
     return (
         <div className={classes.calendar}>
             <div className="container">

@@ -9,8 +9,6 @@ import { setInputEmptyStatus, changeModalStatus, setInputValue } from '../../../
 import EmploymentModal from '../../EmploymentModal/EmploymentModal';
 
 const BarBottom: FC = () => {
-	console.log("BarBottom update",);
-
 	const employee = useSelector((state: ICalendarState) => state.employee)
 	const note = useSelector((state: ICalendarState) => state.note)
 	const isEmployeeInputEmpty = useSelector((state: ICalendarState) => state.isEmployeeInputEmpty)

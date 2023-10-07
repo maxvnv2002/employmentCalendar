@@ -9,8 +9,6 @@ interface RowProps {
 }
 
 const Row: FC<RowProps> = ({ row, rowIndex }) => {
-    console.log("Row update",);
-
     return (
         <div className={classes.row}>
             <Cell

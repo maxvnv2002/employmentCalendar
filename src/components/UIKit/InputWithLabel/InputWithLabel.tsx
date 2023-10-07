@@ -24,13 +24,16 @@ const InputWithLabel: FC<InputWithLabelProps> = ({
     error
 }) => {
     const [inputValue, setInputValue] = useState(value)
-    console.log("InputWithLabel update",);
-
+    
     const onChangeHandler = useCallback(debounce(onChange, 500), [onChange])
 
     useEffect(() => {
         onChangeHandler(inputValue)
     }, [inputValue])
+
+    useEffect(() => {
+        setInputValue(value)
+    }, [value])
 
     
     const selectedInputClasses = classNames({
