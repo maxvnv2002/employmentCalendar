@@ -6,6 +6,7 @@ import Button from '../../UIKit/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICalendarState } from '../../../types/calendar';
 import { setInputEmptyStatus, changeModalStatus, setInputValue } from '../../../store/actions/calendarActionCreators';
+import EmploymentModal from '../../EmploymentModal/EmploymentModal';
 
 const BarBottom: FC = () => {
 	console.log("BarBottom update",);
@@ -45,6 +46,7 @@ const BarBottom: FC = () => {
 				onChange={noteChangeHandler}
 			/>
 			<Button children='Отправить' onClick={sendCalendarHandler} />
+			<EmploymentModal/>
 		</div>
 	)
 }

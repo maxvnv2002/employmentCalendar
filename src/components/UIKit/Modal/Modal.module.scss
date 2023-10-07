@@ -1,4 +1,4 @@
-$animationDuration: 0.3s;
+@import '/src/assets/styles/main.scss';
 
 .modal {
 	position: absolute;
@@ -10,7 +10,7 @@ $animationDuration: 0.3s;
 	align-items: center;
 	justify-content: center;
 
-	background: rgba(0,0,0,0.4);
+	background: $lowOpacityBlack;
 	backdrop-filter: blur(5px);
 
 	&.open {
@@ -27,11 +27,9 @@ $animationDuration: 0.3s;
 
 	.wrapper {
 		display: block;
-		width: 400px;
-		height: 300px;
-		background: #fff;
-		padding: 10px;
+		padding: 20px;
 		border-radius: 10px;
+    background: $white;
 	}
 }
 

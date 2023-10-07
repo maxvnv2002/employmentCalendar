@@ -1,10 +1,10 @@
 import React, {FC, useRef} from 'react';
-import {TTable} from "../../../../types/table";
-import {DAYS} from "../../../../store/reducers/getInitialCalendarState";
+import {TTable} from "../../../types/table";
+import {DAYS} from "../../../store/reducers/getInitialCalendarState";
 import classes from './List.module.scss';
 import classNames from "classnames";
 import {useSelector} from "react-redux";
-import {ICalendarState} from "../../../../types/calendar";
+import {ICalendarState} from "../../../types/calendar";
 
 interface ListProps {
     array: TTable
