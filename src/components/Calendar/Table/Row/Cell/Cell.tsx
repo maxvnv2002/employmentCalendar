@@ -1,7 +1,7 @@
-import React, {FC, useMemo} from 'react';
+import React, {FC} from 'react';
 import classNames from "classnames";
 import classes from './Cell.module.scss';
-import {ICell, IDividedCell, TRow, TTable} from '../../../../../types/table';
+import {ICell} from '../../../../../types/table';
 import store from '../../../../../store';
 import { setCellStatus } from '../../../../../store/actions/calendarActionCreators';
 import {useSelector} from "react-redux";
@@ -37,9 +37,11 @@ const Cell: FC<CellProps> = React.memo(({rowIndex, cellIndex, cell}) => {
         return (
             <div className={cellClasses}>
                 { innerCells.map((innerCell, index: number) => (
-                    <InnerCell onClick={(event) => cellClickHandler(event, index)}
-                               index={index}
-                               isChecked={innerCell.isChecked}
+                    <InnerCell 
+                        key={index}
+                        index={index}
+                        isChecked={innerCell.isChecked}
+                        onClick={(event) => cellClickHandler(event, index)}
                     />
                 ))}
             </div>

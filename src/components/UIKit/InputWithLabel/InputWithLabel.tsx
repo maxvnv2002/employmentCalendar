@@ -1,50 +1,48 @@
-import React, {FC, useState} from 'react';
+import { FC } from 'react';
 import classes from './InputWithLabel.module.scss';
 import classNames from "classnames";
-import {useDispatch, useSelector} from "react-redux";
-import {setInputValue} from "../../../store/actions/calendarActionCreators";
-import {ICalendarState} from "../../../types/calendar";
 
+interface IInputError {
+    message: string;
+    isShow: boolean;
+}
 interface InputWithLabelProps {
     placeholder: string;
     labelValue: string;
     className?: string;
-    targetState: string;
-    canBeEmpty?: boolean
+    value: string;
+    onChange: (value: string) => void;
+    error?: IInputError;
 }
 const InputWithLabel: FC<InputWithLabelProps> = ({
     placeholder,
     labelValue,
     className = '',
-    targetState,
-    canBeEmpty= true
+    value,
+    onChange,
+    error
 }) => {
-    const dispatch = useDispatch()
-    const calendarState = useSelector((state: ICalendarState) => state)
-    const inputValue = calendarState[targetState]
-    const isEmpty = calendarState.isEmployeeInputEmpty;
-    const isErrorShowed = !canBeEmpty && isEmpty
+    console.log("InputWithLabel update",);
 
     const selectedInputClasses = classNames({
-        [classes.input] : true,
-        [className] : !!className,
-        [classes.error]: isErrorShowed
+        [classes.input]: true,
+        [className]: !!className,
+        [classes.error]: error?.isShow
     })
-
-    function inputChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-        dispatch(setInputValue(targetState, e.target.value))
-    }
 
     return (
         <div className={classes.wrap}>
             <p className={classes.label}>{labelValue}</p>
             <input className={selectedInputClasses}
-                   type="text"
-                   placeholder={placeholder}
-                   value={inputValue}
-                   onChange={inputChangeHandler}
+                type="text"
+                placeholder={placeholder}
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
             />
-            { isErrorShowed && <label className={classes.message} htmlFor={classes.input}>Поле не должно быть пустым</label> }
+            {error?.isShow &&
+                <label className={classes.message} htmlFor={classes.input}>
+                    {error.message}
+                </label>}
         </div>
     );
 };
