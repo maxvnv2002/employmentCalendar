@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 import classes from './InputWithLabel.module.scss';
 import classNames from "classnames";
+import { debounce } from '../../../helpers/debounce';
 
 interface IInputError {
     message: string;
@@ -22,8 +23,19 @@ const InputWithLabel: FC<InputWithLabelProps> = ({
     onChange,
     error
 }) => {
-    console.log("InputWithLabel update",);
+    const [inputValue, setInputValue] = useState(value)
+    
+    const onChangeHandler = useCallback(debounce(onChange, 500), [onChange])
 
+    useEffect(() => {
+        onChangeHandler(inputValue)
+    }, [inputValue])
+
+    useEffect(() => {
+        setInputValue(value)
+    }, [value])
+
+    
     const selectedInputClasses = classNames({
         [classes.input]: true,
         [className]: !!className,
@@ -36,8 +48,8 @@ const InputWithLabel: FC<InputWithLabelProps> = ({
             <input className={selectedInputClasses}
                 type="text"
                 placeholder={placeholder}
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
             />
             {error?.isShow &&
                 <label className={classes.message} htmlFor={classes.input}>

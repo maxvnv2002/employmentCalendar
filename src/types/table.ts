@@ -1,5 +1,5 @@
 export interface IDividedCell {
-	isChecked: boolean
+	isChecked: boolean;
 }
 export interface ICell {
 	value: string | number;

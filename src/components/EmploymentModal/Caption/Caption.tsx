@@ -3,7 +3,7 @@ import classes from './Caption.module.scss';
 
 interface CaptionProps {
     title: string,
-    children: React.ReactChild | React.ReactNode
+    children: React.ReactNode
 }
 
 const Caption: FC<CaptionProps> = ({title, children}) => {

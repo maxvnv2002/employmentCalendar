@@ -23,7 +23,6 @@ const Cell: FC<CellProps> = React.memo(({rowIndex, cellIndex, cell}) => {
 
     function cellClickHandler (e: React.MouseEvent<HTMLDivElement>, innerCellIndex: number = 0) {
         if(isHead) return
-        console.log('click on', rowIndex, cellIndex,innerCellIndex)
         store.dispatch(setCellStatus(rowIndex, cellIndex, innerCellIndex))
     }
 

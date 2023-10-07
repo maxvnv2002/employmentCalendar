@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 
 import classes from './BarBottom.module.scss'
 import InputWithLabel from '../../UIKit/InputWithLabel/InputWithLabel';
@@ -6,10 +6,9 @@ import Button from '../../UIKit/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICalendarState } from '../../../types/calendar';
 import { setInputEmptyStatus, changeModalStatus, setInputValue } from '../../../store/actions/calendarActionCreators';
+import EmploymentModal from '../../EmploymentModal/EmploymentModal';
 
 const BarBottom: FC = () => {
-	console.log("BarBottom update",);
-
 	const employee = useSelector((state: ICalendarState) => state.employee)
 	const note = useSelector((state: ICalendarState) => state.note)
 	const isEmployeeInputEmpty = useSelector((state: ICalendarState) => state.isEmployeeInputEmpty)
@@ -31,9 +30,9 @@ const BarBottom: FC = () => {
 		dispatch(changeModalStatus())
 	}
 
-	function noteChangeHandler(value: string) {
+	const noteChangeHandler = useCallback((value: string) => {
 		dispatch(setInputValue('note', value))
-	}
+	}, [])
 
 	return (
 		<div className={classes.barBottom}>
@@ -45,6 +44,7 @@ const BarBottom: FC = () => {
 				onChange={noteChangeHandler}
 			/>
 			<Button children='Отправить' onClick={sendCalendarHandler} />
+			<EmploymentModal/>
 		</div>
 	)
 }

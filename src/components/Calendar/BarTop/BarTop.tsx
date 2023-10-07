@@ -8,7 +8,6 @@ import { resetCalendar, setInputValue } from '../../../store/actions/calendarAct
 import Checkbox from '../../UIKit/Checkbox/Checkbox';
 
 const BarTop: FC = () => {
-	console.log("BarTop update",);
 	const isDivided = useSelector((state: ICalendarState) => state.isDivided)
 	const employee = useSelector((state: ICalendarState) => state.employee)
 	const isEmployeeInputEmpty = useSelector((state: ICalendarState) => state.isEmployeeInputEmpty)

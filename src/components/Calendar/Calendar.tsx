@@ -2,13 +2,11 @@ import { FC } from 'react';
 
 import classes from './Calendar.module.scss';
 import Table from "./Table/Table";
-import Modal from "./Modal/Modal";
+//import Modal from "./Modal/Modal";
 import BarTop from './BarTop/BarTop';
 import BarBottom from './BarBottom/BarBottom';
 
 const Calendar: FC = () => {
-    console.log("Calendar update");
-
     return (
         <div className={classes.calendar}>
             <div className="container">
@@ -17,7 +15,6 @@ const Calendar: FC = () => {
                 <Table />
                 <BarBottom/>
             </div>
-            <Modal title={'Занятость'} />
         </div>
     );
 };
