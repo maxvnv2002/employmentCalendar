@@ -2,16 +2,16 @@ import { ICalendarState } from '../../types/calendar'
 import * as actions from './calendarActions'
 
 export const setCellStatus = (rowIndex: number,
-                              cellIndex: number,
-                              innerCellIndex: number) => (
-{
-    type: actions.setStatus,
-    payload: {rowIndex, cellIndex, innerCellIndex}
-})
+    cellIndex: number,
+    innerCellIndex: number) => (
+    {
+        type: actions.setStatus,
+        payload: { rowIndex, cellIndex, innerCellIndex }
+    })
 
 export const setInputValue = <T extends ICalendarState, S extends keyof T, V extends T[S]>(targetState: S, value: V) => ({
     type: actions.setInputValue,
-    payload: {targetState, value}
+    payload: { targetState, value }
 
 })
 

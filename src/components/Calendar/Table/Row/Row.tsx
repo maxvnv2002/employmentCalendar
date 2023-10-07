@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import classes from "../Table.module.scss";
 import Cell from "./Cell/Cell";
 import {TRow} from "../../../../types/table";
@@ -30,5 +30,5 @@ const Row: FC<RowProps> = ({ row, rowIndex }) => {
     );
 }
 
-export default Row
+export default memo(Row)
 
